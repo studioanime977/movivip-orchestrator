@@ -1,0 +1,18 @@
+{
+  "project_path": "/tmp/moviauto-test",
+  "project_id": "a739c6635ed6",
+  "iteration": 0,
+  "max_iterations": 200,
+  "start_time": "2026-11-25T10:58:31.145056",
+  "last_activity": null,
+  "current_task": null,
+  "last_compile": null,
+  "last_tests": null,
+  "cycles_no_progress": 0,
+  "last_progress_hash": null,
+  "status": "running",
+  "errors": [],
+  "tasks": [],
+  "current_model": "claude-opus-5-5",
+  "current_profile": null
+}

@@ -1,0 +1,99 @@
+{
+  "version": "1.0.0",
+  "name": "MOVIVIP Autonomous Development Orchestrator",
+  "max_iterations": 200,
+  "max_time_seconds": 28800,
+  "auto_continue": true,
+  "auto_compile": true,
+  "auto_test": true,
+  "session_recovery": true,
+  "multiproject": true,
+  "persistent_log": true,
+  "cycle_detection": true,
+  "respect_permissions": true,
+  "claude_path": "/home/movivipnetwork/.local/bin/claude",
+  "projects_path": "/home/movivipnetwork/.movivip-orchestrator/projects",
+  "sessions_path": "/home/movivipnetwork/.movivip-orchestrator/sessions",
+  "logs_path": "/home/movivipnetwork/.movivip-orchestrator/logs",
+  "state_path": "/home/movivipnetwork/.movivip-orchestrator/state",
+  "backups_path": "/home/movivipnetwork/.movivip-orchestrator/backups",
+  "memory_path": "/home/movivipnetwork/.claude/projects/-home-movivipnetwork--movivip-orchestrator/memory",
+  "default_model": "claude-opus-5-5",
+  "resource_limits": {
+    "max_ram_mb": 2800,
+    "max_cpu_cores": 2,
+    "check_memory": true
+  },
+  "exclusions": [
+    ".git/",
+    ".gradle/",
+    "build/",
+    "app/build/",
+    "node_modules/",
+    "__pycache__/",
+    ".venv/",
+    "*.class",
+    "*.dex",
+    "*.hprof",
+    "*.tmp",
+    "*.log",
+    "*.cache"
+  ],
+  "profiles": {
+    "movivpn": {
+      "path": "/home/movivipnetwork/Escritorio/MOVIVPN/MOVIVPN-App",
+      "build_tasks": [
+        "./gradlew :app:compileDebugKotlin --console=plain",
+        "./gradlew :app:testDebugUnitTest --console=plain",
+        "./gradlew :app:lintDebug --console=plain",
+        "./gradlew :app:assembleDebug --console=plain"
+      ],
+      "test_commands": [
+        "./gradlew :app:testDebugUnitTest --console=plain"
+      ],
+      "engine_files": [
+        "engines/ssh/go.mod",
+        "engines/ssh/tuic.mod",
+        "engines/ssh/vmess.mod",
+        "engines/ssh/build-android.sh",
+        "engines/ssh/build-tuic-android.sh",
+        "engines/ssh/build-vmess-android.sh"
+      ]
+    },
+    "android_gradle": {
+      "build_tasks": [
+        "./gradlew assembleDebug --console=plain",
+        "./gradlew testDebugUnitTest --console=plain",
+        "./gradlew lintDebug --console=plain"
+      ],
+      "test_commands": [
+        "./gradlew testDebugUnitTest --console=plain"
+      ]
+    },
+    "python": {
+      "build_tasks": [
+        "python3 -m py_compile",
+        "python3 -m pytest"
+      ],
+      "test_commands": [
+        "python3 -m pytest"
+      ]
+    },
+    "go": {
+      "build_tasks": [
+        "go build ./..."
+      ],
+      "test_commands": [
+        "go test ./..."
+      ]
+    },
+    "nodejs": {
+      "build_tasks": [
+        "npm run build"
+      ],
+      "test_commands": [
+        "npm test"
+      ]
+    }
+  }
+}
